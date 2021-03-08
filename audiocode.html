@@ -1,0 +1,20 @@
+<audio id="audio"><source /></audio>
+
+<div class="audioplayer">
+  <div class="controls">
+    <ul>
+      <li id="equalizer"><img src="https://lh3.googleusercontent.com/proxy/y990MCrS8C6-HgpKNS80S0JrEUQjbGDF32AmlVi2k1agy0s0KFBFD8LmwxlwoOwo1TYE5WSbzS5loe4ElhcZpleJ2V_EMdSWdhBpPwnVXuAx" height="25px" /></li>
+      <li id="playpause_btn" onclick=playpause() class="fa-play pointer" />
+      <li id="backward_btn" onclick=backward() class="fa-step-backward pointer" />
+      <li id="forward_btn" onclick=forward() class="fa-step-forward pointer" />
+      <li id="mute_btn" onclick=mute() class="fa-volume-off pointer" />
+      <li><input type="range" min="0" max="100" value="100" id="volume"></li>
+    </ul>
+  </div>
+  <div class="songdetails">
+    <ul>
+      <li id="songName" class="songdetails" />
+      <li id="songduration" class="songduration" />
+    </ul>
+  </div>
+</div>
