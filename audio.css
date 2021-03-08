@@ -1,0 +1,43 @@
+.audioplayer {
+    background-color:black;
+}
+.controls {
+    width:30%;
+    margin: auto;
+    display: inline-block;
+}
+.pointer {
+    cursor: pointer;
+    font-size:25px;
+    color:white;
+    margin:auto;
+    padding-left: 0px;
+    font-family: 'FontAwesome';
+}
+ul {
+    list-style-type:none;
+    height:30px;
+    width:100%;
+    display: flex;
+}
+li {
+  display: inline-block;
+  width:20px;
+}
+.songdetails {
+    color:white;
+    width:50%;
+    display: inline-block;
+    height:30px;
+    font-size:20px;
+    font-family: 'Akaya Telivigala', cursive;
+}
+.songduration {
+    color:white;
+    width:60%;
+    display: inline-block;
+    height:30px;
+    font-size:20px;
+    font-family: 'Akaya Telivigala', cursive;
+    text-align: right;
+}
