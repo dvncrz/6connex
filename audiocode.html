@@ -175,7 +175,6 @@ function volumedown() {
 window.onload = autoplay(songId);
 
 function autoplay(song) {
-    previousvol = 0.5;
     loadsong(song);
     document.getElementById("volume").innerText = Math.round(audio.volume * 100);
 
