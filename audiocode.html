@@ -172,10 +172,12 @@ function volumedown() {
 }
 
 
-window.onload = autoplay(songId);
+window.onload = function start() {
+	audio.volume = 0.5;
+	loadsong(song);
+}
 
 function autoplay(song) {
-    audio.volume = 0.5;
     loadsong(song);
     document.getElementById("volume").innerText = Math.round(audio.volume * 100);
 
