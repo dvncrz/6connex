@@ -6,9 +6,12 @@ var songId = 0;
 
 var playlist = [];
 
-playlist.push(["https://cdn-akamai.6connex.com//465/2156//Lobby_Playlist_BMS_Prospanica_16141150836837815.mp3","Simples corazones","Fonseca"]);
+/*playlist.push(["https://cdn-akamai.6connex.com//465/2156//Lobby_Playlist_BMS_Prospanica_16141150836837815.mp3","Simples corazones","Fonseca"]);
 
-playlist.push(["https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3","Helix Sound","Unknown Artist"]);
+playlist.push(["https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3","Helix Sound","Unknown Artist"]);*/
+
+playlist.push(["https://www.mboxdrive.com/Rising%20World%20by%20Chill%20Study.mp3","Rising World","Chill Study"]);
+playlist.push(["https://www.mboxdrive.com/Beach%20by%20JAM%20Studio.mp3","Beach","JAM Studio"]);
 
 function playpause() {       
     var element = document.getElementById("playpause_btn")
