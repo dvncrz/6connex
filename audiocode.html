@@ -173,7 +173,8 @@ function volumedown() {
 
 
 window.onload = function start() {
-	audio.volume = 0.5;
+	previousvol = 0.5;
+	audio.volume = previousvol;
 	document.getElementById("volume").innerText = Math.round(audio.volume * 100);
 	loadsong(songId);
 }
