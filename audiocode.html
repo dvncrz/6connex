@@ -174,7 +174,8 @@ function volumedown() {
 
 window.onload = function start() {
 	audio.volume = 0.5;
-	loadsong(song);
+	window.onload = autoplay(songId);
+	audio.pause();
 }
 
 function autoplay(song) {
