@@ -1,80 +1,75 @@
-<!-- DESIGNED BY Duvan Cruz FOR 6Connex -->
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap" rel="stylesheet">
-</head>
+
 <style>
-.audioplayer {
-    background-color:black;
+.grid-container {
+  display: grid;
+  grid-template-columns: 50px 50px 50px 50px 50px 50px 50px 50px 440px 120px;
+  grid-template-rows: 30px;
+  gap: 0px 0px;
+  grid-template-areas: ". . . . . . . . . .";
+  background-color: #1E22AA;
 }
-.controls {
-    width:30%;
-    margin: auto;
-    display: inline-block;
+
+.grid-container > span {
+  text-align: center;
+  color:white;
 }
 .pointer {
     cursor: pointer;
-    font-size:25px;
-    color:white;
-    margin:auto;
-    padding-left: 0px;
     font-family: 'FontAwesome';
-}
-ul {
-    list-style-type:none;
-    height:30px;
-    width:100%;
-    display: flex;
-}
-li {
-  display: inline-block;
-  width:20px;
+    font-size:25px;
+    padding: 3px 0;
 }
 .songdetails {
-    color:white;
-    width:50%;
-    display: inline-block;
-    height:30px;
-    font-size:20px;
-    font-family: 'Akaya Telivigala', cursive;
+	font-family: 'Arial';
+    font-size:15px;
+    padding: 6px 0;
 }
-.songduration {
-    color:white;
-    width:60%;
-    display: inline-block;
-    height:30px;
-    font-size:20px;
-    font-family: 'Akaya Telivigala', cursive;
-    text-align: right;
+.pointer .tooltiptext {
+  visibility: hidden;
+  width: 100px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
 }
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
 </style>
+
+</head>
 <body>
 
 <audio id="audio"><source /></audio>
 
-<div class="audioplayer">
-  <div class="controls">
-    <ul>
-      <li id="equalizer"><img src="https://lh3.googleusercontent.com/proxy/y990MCrS8C6-HgpKNS80S0JrEUQjbGDF32AmlVi2k1agy0s0KFBFD8LmwxlwoOwo1TYE5WSbzS5loe4ElhcZpleJ2V_EMdSWdhBpPwnVXuAx" height="25px" /></li>
-      <li id="playpause_btn" onclick=playpause() class="fa-play pointer" />
-      <li id="backward_btn" onclick=backward() class="fa-step-backward pointer" />
-      <li id="forward_btn" onclick=forward() class="fa-step-forward pointer" />
-      <li id="mute_btn" onclick=mute() class="fa-volume-off pointer" />
-      <li><input type="range" min="0" max="100" value="100" id="volume"></li>
-    </ul>
-  </div>
-  <div class="songdetails">
-    <ul>
-      <li id="songName" class="songdetails" />
-      <li id="songduration" class="songduration" />
-    </ul>
-  </div>
+<div class="grid-container">
+  <span id="equalizer"><img src="https://images.squarespace-cdn.com/content/52ed5ca6e4b04c4182242710/1496861667470-DW0BVVMXF5J0DL1U0FUC/turning_the_tables.gif?content-type=image%2Fgif" height="25px" width="30px"></span>
+  <span id="playpause_btn" onclick=playpause() class="fa-play-circle pointer"></span>
+  <span onclick=backward() class="fa-step-backward pointer"></span>
+  <span onclick=forward() class="fa-step-forward pointer"></span>
+  <span id="mute_btn" onclick=mute() class="fa-volume-up pointer"></span>
+  <span id="playpause_btn" onclick=volumeup() class="fa-plus pointer"></span>
+  <span id="volume" class="songdetails"></span>
+  <span id="playpause_btn" onclick=volumedown() class="fa-minus pointer"></span>
+  <span id="songName" class="songdetails"></span>
+  <span id="songduration" class="songdetails">00:00 / 00:00</span>
 </div>
 
-<script>
+<script type="text/javascript">
+/*SCRIPT WRITTEN BY DUVAN CRUZ FOR 6CONNEX*/
 let audio = document.getElementById('audio');
 let isPaused = audio.paused;
 let isPlaying = !isPaused;
@@ -83,21 +78,20 @@ var songId = 0;
 
 var playlist = [];
 
-playlist.push(["https://cdn-akamai.6connex.com//465/2156//Lobby_Playlist_BMS_Prospanica_16141150836837815.mp3","Simples corazones","Fonseca"]);
-
-playlist.push(["https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3","Helix Sound","Unknown Artist"]);
+playlist.push(["https://www.mboxdrive.com/Rising%20World%20by%20Chill%20Study.mp3","Rising World","Chill Study"]);
+playlist.push(["https://www.mboxdrive.com/Beach%20by%20JAM%20Studio.mp3","Beach","JAM Studio"]);
 
 function playpause() {       
     var element = document.getElementById("playpause_btn")
 
-    if (element.matches(".fa-play")) {
-      element.classList.remove("fa-play");
-      element.classList.add("fa-pause");
+    if (element.matches(".fa-play-circle")) {
+      element.classList.remove("fa-play-circle");
+      element.classList.add("fa-pause-circle");
       audio.play();
       document.getElementById("equalizer").style.visibility = "visible";
-    } else if (element.matches(".fa-pause")) {
-      element.classList.remove("fa-pause");
-      element.classList.add("fa-play");
+    } else if (element.matches(".fa-pause-circle")) {
+      element.classList.remove("fa-pause-circle");
+      element.classList.add("fa-play-circle");
       audio.pause();
       document.getElementById("equalizer").style.visibility = "hidden";
     } 
@@ -121,16 +115,74 @@ function backward() {
     autoplay(songId);
 }
 
+audio.addEventListener('ended', (event) => {
+  forward();
+});
+
+var previousvol = 1
+
+function mute() {
+	var elementvol = document.getElementById("mute_btn")
+    
+	if (audio.volume > 0) {
+    	previousvol = audio.volume;    	
+        audio.volume = 0;
+        elementvol.classList.remove("fa-volume-up");
+    	elementvol.classList.add("fa-volume-off");
+    } else if (audio.volume == 0) {
+    	audio.volume = previousvol;
+        elementvol.classList.remove("fa-volume-off");
+    	elementvol.classList.add("fa-volume-up");
+    }
+    document.getElementById("volume").innerText = Math.floor(audio.volume * 100);
+}
+
+function volumeup() {
+	var elementvol = document.getElementById("mute_btn");
+    
+    previousvol += 0.05;
+    
+    if (previousvol > 1) {
+    	previousvol = 1;
+    }
+    
+	audio.volume = previousvol;
+    document.getElementById("volume").innerText = Math.round(previousvol * 100);
+    if ((Math.floor(previousvol * 100)) > 0) {
+    	elementvol.classList.remove("fa-volume-off");
+    	elementvol.classList.add("fa-volume-up");
+    } 
+}
+
+function volumedown() {
+	var elementvol = document.getElementById("mute_btn");
+    
+    previousvol -= 0.05;
+    
+    if (previousvol < 0) {
+    	previousvol = 0;
+    }
+    
+	audio.volume = previousvol;
+    document.getElementById("volume").innerText = Math.round(previousvol * 100);
+    if ((Math.floor(audio.volume * 100)) == 0) {
+    	elementvol.classList.remove("fa-volume-up");
+    	elementvol.classList.add("fa-volume-off");
+    }    	
+}
+
+
 window.onload = autoplay(songId);
 
 function autoplay(song) {
     loadsong(song);
+    document.getElementById("volume").innerText = Math.round(audio.volume * 100);
 
     var element = document.getElementById("playpause_btn")
 
     audio.play();
-    element.classList.remove("fa-play");
-    element.classList.add("fa-pause");
+    element.classList.remove("fa-play-circle");
+    element.classList.add("fa-pause-circle");
     document.getElementById("equalizer").style.visibility = "visible";
 }
 
